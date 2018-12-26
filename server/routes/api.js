@@ -1,31 +1,30 @@
-const express = require("express")
-const request = require('request');
-const moment = require("moment")
-const Insect = require("../models/insect")
-const Observation = require("../models/observation")
+const express = require('express')
+const Model = require("../models/insect")
+const Observation = Model.observation
+const Insect = Model.insect
 const router = express.Router()
-
-request("some url", function (err, res) 
-{
-    console.log("@server.js: Got data from external API \n")
- 
-
+router.get("/sanity", function (req, res) {
+    res.send("OK")
+    console.log("sanity check OK")
 });
-
-router.get("/sanity", function (req, res) 
-    {
-        res.send("OK")
-        console.log("sanity check OK")    
-    });
-
-router.get("/insects/", function (req, response) 
-    {
-                // This will send ALL of the insects to the client
-    });
-
-router.get("/observations/", function (req, response) 
-{
-                // This will send ALL of the observations to the client
+router.get("/insects/:insectName", function (req, res) {
+    let insectName = req.params.insectName
+    Insect.find({
+            commonName: `${insectName}`
+        })
+        .populate("observations")
+        .exec(function (err, insect) {
+            res.send(insect)
+        })
 });
-
+router.get("/insects", function (req, res) {
+    Insect.find({})
+        .populate("observations")
+        .exec(function (err, results) {
+            res.send(results)
+        })
+})
+// router.get("/observations/:insectName", function (req, res) {
+// let insectName = req.params.insectName
+// });
 module.exports = router

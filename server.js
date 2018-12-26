@@ -1,24 +1,21 @@
 const express = require('express')
-const path = require('path');
 const app = express();
-const api = require("./server/routes/api")
+const path = require('path');
 const bodyParser = require('body-parser')
+const api = require("./server/routes/api")
 
+app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'node_modules')));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/buggestlistDB', { uslNewUrlParser : true})
 
-
-
-app.use(express.static(path.join(__dirname, 'dist')));
-app.use(express.static(path.join(__dirname, 'node_modules')));
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
-
 app.use("/", api);
 
 
-const port = 8080 
+const port = 8081 
 app.listen(port, function () {
     console.log(`Server running on ${port}`)
 })
