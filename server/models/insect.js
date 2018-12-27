@@ -44,8 +44,8 @@ const Observation = mongoose.model("Observation", observationSchema)
     .populate("observations")
     .exec(function (err, insects) {
         console.log(insects)
-    }) */
-
+    })
+ */
 //  Find all ovservations with populated insects
 /* Observation.find({})
     .populate("insect")
@@ -57,8 +57,10 @@ const Observation = mongoose.model("Observation", observationSchema)
 
 
 
-module.exports = Insect
-module.exports = Observation
+module.exports = {
+    insect: Insect,
+    observation: Observation
+}
 
 /* let insect1 = new Insect({
 
