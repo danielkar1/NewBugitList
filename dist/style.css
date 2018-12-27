@@ -1,0 +1,92 @@
+body{
+    background-color: rgb(248, 248, 244);
+   
+}
+.header{
+    height: 20vh;
+    display: grid;
+
+}
+#inputs {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    
+}
+.header > img {
+    justify-self: center;
+    align-self: center;
+    height: 20vh;
+}
+.insect {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    grid-column-gap: 20px;
+    border-radius: 30px;
+    border:2px solid green;
+}
+.insect img {
+    height: 300px;
+    width: 400px;
+    border-radius: 30px;
+    border:2px solid green;
+}
+.insect-info {
+    justify-self: left;
+    display: block;
+}
+
+.common-name {
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    color: green;
+    margin: 10px 0;
+    font-size: 25px;
+
+}
+.insect-container {
+    display: grid;
+    grid-row-gap: 20px;
+    font-family: 'Nunito', sans-serif;
+}
+#inputs input {
+    border-radius: 5px;
+    border: 1px solid green;
+}
+#inputs button {
+    border-radius: 5px;
+    border: 1px solid white ; 
+    background-color: #599338;
+    color: white;
+    font-weight:bold ;
+} 
+
+.myButton {
+	background-color:#f29018;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.myButton:hover {
+	background-color:#599338;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+#orange {
+    border-radius: 28px;
+    background-color: #f29018;
+   width: auto;
+   height: auto;
+}

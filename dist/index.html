@@ -5,17 +5,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="about:blank">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:700i|Nunito" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-    <!-- <script src="E:\code\NEWbugitlist\node_modules\handlebars\dist\handlebars.js"></script> -->
 </head>
 <body>
-    <div id="danel">shtut</div>
+    <a href="postReport.html" class="myButton">Post observations</a>
     
+    <div id="orange"></div>
+    <div class="header">
+        <img src="bugit2noBack.png">
+        
+    </div>
+    <br>
+    <div id="inputs">
+        
+        <input type="text" placeholder="insect name" id="name-input">
+        <button onclick="bugNameQuery()" class="buggit">Buggit!</button>
+        
+        <input type="text" placeholder="season" id="season-input">
+        <button onclick="seasonQuery()" class="buggit">Buggit!</button>
+        
+        <input type="text" placeholder="location" id="location-input">
+        <button onclick="locationQuery()" class="buggit">Buggit!</button>
+        
+    </div>
+    <br>
+    <div id="content">
+        <div class="insect-container"></div>
+    </div>
     
-    <!-- <script src="E:\code\NEWbugitlist\server\models\insect.js"></script> -->
+    <script id="insect-template" type="text/x-handlebars-template">
+        {{#each dummyData}}
+            <div class="insect">
+                <img src="{{picture}}">
+                <div class="insect-info">
+                    <div class="common-name">Common Name: {{commonName}}</div>
+                    <div class="latin-name">Latin Name: {{latinName}}</div>
+                    <div class="day-night">Day/Night: {{dayOrNight}}</div>
+                    <div class="season">Season: {{season}}</div>
+                    <div id="observations">Observations:
+                        {{#observations}}
+                        <ul>
+                            <li>Date of observation: {{date}}</li>
+                            <li>Location of observation: {{spottedLocation}}</li>
+                        </ul>
+                        {{/observations}}
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </script>
+    
+    <script src="./handlebars/dist/handlebars.js"></script>
     <script src="./jquery/dist/jquery.js"></script>
-    <script src="bugManger.js"></script>
+    <script src="bugManager.js"></script>
     <script src="renderer.js"></script>
     <script src="main.js"></script>
-</body>
 </html>

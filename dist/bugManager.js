@@ -13,33 +13,36 @@ class TempManager {
             if (this.dummyData !== undefined) {
                 this.dummyData = DumInsectsData
                 console.log(this.dummyData)
-                // this.renderer.renderCities(this.cityData)
+                this.renderer.renderData(this.dummyData)
 
             }
         })
     }
 
 
+  
     async getBugByName(insectName) { //find bug by Name
 
-        let bugSearched= await $.get(`/insectsName/${insectName}`)
+        let bugSearched= await $.get(`/insects/${insectName}`)
+        console.log(bugSearched)
         this.dummyData=bugSearched 
-        // this.renderer.renderCities(this.cityData)
+        this.renderer.renderData(this.dummyData)
     
     }
+ 
  
     async getBugBySeason(insectSeason) { //find bug by Season
 
         let bugSearched= await $.get(`/insectseason/${insectSeason}`)
         this.dummyData=bugSearched 
-        // this.renderer.renderCities(this.cityData)
+        this.renderer.renderData(this.dummyData)
     
     }
     async getBugByLocation(insectLocaion) { //find bug by Location
 
-        let bugSearched= await $.get(`/insectsSeason/${insectLocaion}`)
+        let bugSearched= await $.get(`/insectslocation/${insectLocaion}`)
         this.dummyData=bugSearched 
-        // this.renderer.renderCities(this.cityData)    
+        this.renderer.renderData(this.dummyData)    
     }
     
     getObsDataFromDB() {  
@@ -61,10 +64,13 @@ class TempManager {
         // this.renderer.renderCities(this.cityData)
     }
 
-    saveReport(form) {
-      
-        $.post(`/saveObservation`, form, function () {
-            console.log("city saved")
+    saveReport(newReport) {
+        console.log("check")
+        $.post(`/saveObservation`, newReport, function (res) {
+            console.log("thank you for posting!")
+            console.log(res)
+            
+            
         })
     }
     removebugs(bug) {
@@ -83,6 +89,3 @@ class TempManager {
     }
 
 
-    test=new TempManager()
-    //  test.getDataFromDB()
-    test.getBugByName('Crimson-speckled flunkey')

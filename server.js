@@ -15,7 +15,7 @@ mongoose.connect('mongodb://localhost/buggestlistDB', { uslNewUrlParser : true})
 app.use("/", api);
 
 
-const port = 8081 
+const port = 8082 
 app.listen(port, function () {
     console.log(`Server running on ${port}`)
 })
